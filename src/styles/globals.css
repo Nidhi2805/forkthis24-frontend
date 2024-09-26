@@ -1,9 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Bungee&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Cantora+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap'); 
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face{
+    font-family:'Google Sans';
+    font-style:normal;
+    font-weight:400;
+    font-display:block;
+    src:url(//fonts.gstatic.com/s/googlesans/v58/4UaRrENHsxJlGDuGo1OIlJfC6l_24rlCK1Yo_Iq2rgCIlsw.woff2)format('woff2');
+    unicode-range:U+0308,U+0530-058F,U+2010,U+2024,U+25CC,U+FB13-FB17;
+}
 
 @font-face{
     font-family:'Google Sans';
@@ -99,3 +109,25 @@ body {
     background-repeat: repeat-x, repeat-x, repeat-y, repeat-y;
     background-position: top, bottom, left, right;
   }
+
+  /* Custom scrollbar styling */
+.repo-scrollbar::-webkit-scrollbar {
+    width: 2px;
+  }
+  
+  .repo-scrollbar::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 1);
+    border-radius: 4px;
+  }
+  
+  .repo-scrollbar::-webkit-scrollbar-track {
+    background-color: rgba(0, 0, 0, 1);
+  }
+  
+  .hide-scrollbar {
+    -ms-overflow-style: none;  
+    scrollbar-width: none;  
+}
+.hide-scrollbar::-webkit-scrollbar {
+    display: none;  
+}

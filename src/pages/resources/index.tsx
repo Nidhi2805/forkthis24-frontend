@@ -1,9 +1,7 @@
 "use client";
+import Sidebar from "../../components/siderbar";
 import React, { useState } from "react";
-import Image from 'next/image';
-import { AiOutlineHome } from "react-icons/ai"; // Importing the icon
-import { BsFileBarGraph, BsBox2 } from "react-icons/bs";
-import { IoLogOutOutline } from "react-icons/io5"; // Import the Logout icon
+import Image from "next/image";
 import { VscThreeBars } from "react-icons/vsc";
 
 const Resources: React.FC = () => {
@@ -13,155 +11,67 @@ const Resources: React.FC = () => {
         setSidebarOpen(!sidebarOpen);
     };
 
+    const renderSection = (title: string, color: string, borderColor: string) => (
+        <>
+            <p className="text-2xl md:text-3xl mb-4 text-left w-full pl-4 font-press text-[rgba(140,142,143,1)]">
+                {title}
+            </p>
+            <div className="flex overflow-x-auto pb-4 mb-8 px-4 hide-scrollbar">
+                {[1, 2, 3, 4, 5].map((item) => (
+                    <div key={item} className="button-dashed-border flex-shrink-0 w-[80%] sm:w-[60%] md:w-[40%] mr-4 last:mr-0 mt-2 p-4">
+                        <div className="bg-[rgba(10,12,14,1)] rounded-lg overflow-hidden shadow-lg flex flex-col sm:flex-row h-auto sm:h-48">
+                            <div className="relative w-full sm:w-1/3 h-32 sm:h-auto">
+                                <Image
+                                    src="/Resources/sideImage.webp"
+                                    alt="Card Image"
+                                    layout="fill"
+                                    objectFit="cover"
+                                />
+                            </div>
+                            <div className="w-full sm:w-2/3 p-4 flex flex-col justify-between">
+                                <div>
+                                    <h2 className={`text-xl sm:text-2xl md:text-3xl font-bold font-press ${color} mb-2 mt-2 sm:-mt-4`}>
+                                        Fireship
+                                    </h2>
+                                    <p className="text-white text-xs sm:text-sm md:text-base font-roboto-mono">
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse hendrerit metus
+                                    </p>
+                                </div>
+                                <button className={`w-full sm:w-3/4 px-2 py-1 ${color} text-white hover:opacity-80 font-press text-xs ${borderColor} mt-4 sm:-mb-4`}>
+                                    View Report
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </>
+    );
+
     return (
         <div className="min-h-screen bg-black text-white flex flex-col">
-            <div className="md:hidden flex justify-between items-center p-5 bg-black">
-                <h1 className="text-4xl font-bungee">Resources</h1>
-                <button onClick={toggleSidebar} className="text-white text-2xl">
-                    <VscThreeBars />
-                </button>
-            </div>
-            <div className={`md:hidden flex flex-col items-center justify-center bg-black`}>
-                <aside className={`w-full p-5 bg-[rgba(10,12,14,1)] flex flex-col transition-all duration-300 ${sidebarOpen ? "block" : "hidden"}`}>
-                    <div className="mb-7 text-center flex flex-col items-center">
-                        <div className="flex items-center space-x-2">
-                            <Image
-                                src="/flower.png"
-                                alt="Player"
-                                width={150}
-                                height={150}
-                                className="rounded-full -ml-3"
-                            />
-                            <div className="text-left">
-                                <p>Player 1</p>
-                                <p className="text-[rgba(140,142,143,1)]">pimla@gmail.com</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="mt-32">
-                        <p className="text-[rgba(140,142,143,1)] text-2xl mb-3">ListItem</p>
-                    </div>
-
-                    <nav className="flex-1 space-y-2">
-                        <button className="w-full text-white py-2 text-left bg-transparent hover:bg-gray-700 flex items-center space-x-3 text-xl ml-2">
-                            <AiOutlineHome />
-                            <span>Dashboard</span>
-                        </button>
-                        <button className="w-full text-white py-2 text-left bg-transparent hover:bg-gray-700 flex items-center space-x-3 text-xl ml-2">
-                            <BsFileBarGraph />
-                            <span>Leaderboard</span>
-                        </button>
-                        <button className="w-full text-white py-2 text-left bg-transparent hover:bg-gray-700 flex items-center space-x-3 text-xl ml-2">
-                            <BsBox2 />
-                            <span>Resources</span>
-                        </button>
-                    </nav>
-
-                    <div className="text-left pt-5">
-                        <button className="w-1/2 text-white py-2 text-center bg-transparent hover:bg-gray-700 flex items-center space-x-4 text-xl ml-10">
-                            <IoLogOutOutline />
-                            <span>Logout</span>
-                        </button>
-                    </div>
-                </aside>
-                <div className={`flex-1 p-7 text-white flex flex-col items-center transition-all duration-300 ${sidebarOpen ? 'opacity-50' : 'opacity-100'}`}>
-        <p className="text-2xl mb-0 text-left w-full pl-0 font-cantora text-[rgba(140,142,143,1)]">YouTube</p>
-
-        <div className="flex flex-col space-y-4  h-36 justify-center" style={{width:"15rem"}}>
-            <div className="button-dashed-border bg-[rgba(10,12,14,1)] text-black text-center py-5 flex-1">Div 1</div>
-            <div className="button-dashed-border bg-[rgba(10,12,14,1)] text-black text-center py-5 flex-1">Div 2</div>
-            
-        </div>
-
-        <p className="text-2xl mb-0 mt-3 text-left w-full pl-0 font-cantora text-[rgba(140,142,143,1)]">Articles</p>
-
-        <div className="flex flex-col space-y-4 w-full h-36 justify-center">
-            <div className="button-dashed-border bg-[rgba(10,12,14,1)] text-black text-center py-5 flex-1">Div 1</div>
-            <div className="button-dashed-border bg-[rgba(10,12,14,1)] text-black text-center py-5 flex-1">Div 2</div>
-            
-        </div>
-
-        <p className="text-2xl mb-0 mt-3 text-left w-full pl-0 font-cantora text-[rgba(140,142,143,1)]">Github</p>
-
-        <div className="flex flex-col space-y-4 w-full h-36 justify-center">
-            <div className="button-dashed-border bg-[rgba(10,12,14,1)] text-black text-center py-5 flex-1">Div 1</div>
-            <div className="button-dashed-border bg-[rgba(10,12,14,1)] text-black text-center py-5 flex-1">Div 2</div>
-            
-        </div>
-    </div>
+            {/* Mobile Header */}
+            <div className="md:hidden flex items-center justify-between p-4">
+                <div className="cursor-pointer" onClick={toggleSidebar}>
+                    <VscThreeBars size={28} color="white" />
+                </div>
+                <h1 className="text-3xl font-press">Resources</h1>
             </div>
 
-            <div className="hidden md:flex flex-1">
-                <aside className="w-64 p-5 bg-[rgba(10,12,14,1)] flex flex-col">
-                    <div className="mb-7 text-center flex flex-col items-center">
-                        <div className="flex items-center space-x-2">
-                            <Image
-                                src="/flower.png"
-                                alt="Player"
-                                width={150}
-                                height={150}
-                                className="rounded-full -ml-3"
-                            />
-                            <div className="text-left">
-                                <p>Player 1</p>
-                                <p className="text-[rgba(140,142,143,1)]">pimla@gmail.com</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="mt-32">
-                        <p className="text-[rgba(140,142,143,1)] text-2xl mb-3">ListItem</p>
-                    </div>
-
-                    <nav className="flex-1 space-y-2">
-                        <button className="w-full text-white py-2 text-left bg-transparent hover:bg-gray-700 flex items-center space-x-3 text-xl ml-2">
-                            <AiOutlineHome />
-                            <span>Dashboard</span>
-                        </button>
-                        <button className="w-full text-white py-2 text-left bg-transparent hover:bg-gray-700 flex items-center space-x-3 text-xl ml-2">
-                            <BsFileBarGraph />
-                            <span>Leaderboard</span>
-                        </button>
-                        <button className="w-full text-white py-2 text-left bg-transparent hover:bg-gray-700 flex items-center space-x-3 text-xl ml-2">
-                            <BsBox2 />
-                            <span>Resources</span>
-                        </button>
-                    </nav>
-
-                    <div className="text-left pt-5">
-                        <button className="w-1/2 text-white py-2 text-center bg-transparent hover:bg-gray-700 flex items-center space-x-4 text-xl ml-10">
-                            <IoLogOutOutline />
-                            <span>Logout</span>
-                        </button>
-                    </div>
-                </aside>
-
-                <div className="flex-1 p-7 text-white flex flex-col items-center">
-                    <h1 className="text-7xl mb-5 text-center font-bungee">Resources</h1>
-                    <p className="text-4xl mb-0 text-left w-full pl-0 font-cantora text-[rgba(140,142,143,1)]">YouTube</p>
-
-                    {/* Container for the three divs */}
-                    <div className="flex space-x-4 w-full h-36 justify-center">
-                        <div className="button-dashed-border bg-[rgba(10,12,14,1)] text-black text-center py-5 flex-1">Div 1</div>
-                        <div className="button-dashed-border bg-[rgba(10,12,14,1)] text-black text-center py-5 flex-1">Div 2</div>
-                        <div className="button-dashed-border bg-[rgba(10,12,14,1)] text-black text-center py-5 flex-1">Div 3</div>
-                    </div>
-
-                    <p className="text-4xl mb-0 mt-3 text-left w-full pl-0 font-cantora text-[rgba(140,142,143,1)]">Articles</p>
-                    
-                    <div className="flex space-x-4 w-full h-36 justify-center">
-                        <div className="button-dashed-border bg-[rgba(10,12,14,1)] text-black text-center py-5 flex-1">Div 1</div>
-                        <div className="button-dashed-border bg-[rgba(10,12,14,1)] text-black text-center py-5 flex-1">Div 2</div>
-                        <div className="button-dashed-border bg-[rgba(10,12,14,1)] text-black text-center py-5 flex-1">Div 3</div>
-                    </div>
-
-                    <p className="text-4xl mb-0 mt-3 text-left w-full pl-0 font-cantora text-[rgba(140,142,143,1)]">Github</p>
-                    
-                    <div className="flex space-x-4 w-full h-36 justify-center">
-                        <div className="button-dashed-border bg-[rgba(10,12,14,1)] text-black text-center py-5 flex-1">Div 1</div>
-                        <div className="button-dashed-border bg-[rgba(10,12,14,1)] text-black text-center py-5 flex-1">Div 2</div>
-                        <div className="button-dashed-border bg-[rgba(10,12,14,1)] text-black text-center py-5 flex-1">Div 3</div>
+            <div className="flex-1 flex">
+                {sidebarOpen && (
+                    <div className="fixed inset-0 bg-black bg-opacity-50 z-40" onClick={toggleSidebar}></div>
+                )}
+                <div className={`fixed inset-y-0 left-0 transform ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'} transition-transform duration-300 ease-in-out z-50 md:relative md:translate-x-0`}>
+                    <Sidebar />
+                </div>
+                <div className="flex-1 overflow-y-auto hide-scrollbar">
+                    <div className="p-4 md:p-6 text-white">
+                        <h1 className="text-4xl md:text-7xl mb-8 text-center font-press md:block hidden">Resources</h1>
+                        {/* Sections */}
+                        {renderSection("YouTube", "text-[rgba(28,194,34,1)]", "border-4 border-[rgba(1,55,6,1)]")}
+                        {renderSection("Articles", "text-[rgba(50,69,236,1)]", "border-4 border-[rgba(23,33,121,1)]")}
+                        {renderSection("Github", "text-[rgba(233,38,32,1)]", "border-4 border-[rgba(141,26,22,1)]")}
                     </div>
                 </div>
             </div>

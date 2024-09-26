@@ -12,6 +12,7 @@ const config = {
         "roboto-mono": ['"Roboto Mono"', "monospace"],
         "bungee": ['"Bungee"', "monospace"],
         "cantora": ['"Cantora One"', "monospace"],
+        "press": ['"Press Start 2P"', "monospace"],
         
       },
       colors: {
